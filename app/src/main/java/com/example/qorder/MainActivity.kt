@@ -61,9 +61,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun QorderApp(viewModel: NoteViewModel = viewModel()) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     val navController = rememberNavController()
     val notes by viewModel.allNotes.collectAsState()
-    val reminderManager = remember { ReminderManager(androidx.compose.ui.platform.LocalContext.current) }
+    val reminderManager = remember { ReminderManager(context) }
 
     NavHost(navController = navController, startDestination = "list") {
         composable("list") {
