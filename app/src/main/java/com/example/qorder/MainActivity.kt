@@ -32,7 +32,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        requestNotificationPermission()
+        try {
+            requestNotificationPermission()
+        } catch (e: Exception) {
+            // 忽略权限请求错误
+        }
 
         setContent {
             QorderTheme {
